@@ -237,6 +237,10 @@ footer p {
         visibility: visible;
     }
 
+    .nav-toggle.show-color{
+        background-color: white;
+    }
+
     .nav-links {
         position: fixed;
         top: 70px;
