@@ -1,50 +1,54 @@
 const currentYearEL = document.getElementById('currentYear')
 currentYearEL.textContent = new Date().getFullYear();
 
-const nav = document.getElementById('nav');
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-const topLink = document.querySelector('.top-link');
+const navEL = document.getElementById('nav');
+const navToggleEL = document.querySelector('.nav-toggle');
+const navLinksEL = document.querySelector('.nav-links');
+const topLinkEL = document.querySelector('.top-link');
+const navCenterEL = document.querySelector('.nav-center');
 
-navToggle.addEventListener('click', function() {
-    navLinks.classList.toggle('show-links');
-    nav.classList.toggle('show-links');
-    const icon = this.querySelector('i');
-    if (navLinks.classList.contains('show-links')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
+navToggleEL.addEventListener('click', function() {
+    navCenterEL.classList.toggle('show-color');
+    navLinksEL.classList.toggle('show-links');
+    navEL.classList.toggle('show-links');
+    const iconEL = this.querySelector('i');
+    if (navLinksEL.classList.contains('show-links')) {
+        iconEL.classList.remove('fa-bars');
+        iconEL.classList.add('fa-times');
+        navToggleEL.style.color = '#1e1d1dff';
     } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        iconEL.classList.remove('fa-times');
+        iconEL.classList.add('fa-bars');
+        navToggleEL.style.color = 'white';
     }
 });
 
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function() {
         if (window.innerWidth <= 768) {
-            navLinks.classList.remove('show-links');
-            nav.classList.remove('show-links');
-            const icon = navToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            navLinksEL.classList.remove('show-links');
+            navEL.classList.remove('show-links');
+            const iconEL = navToggleEL.querySelector('i');
+            iconEL.classList.remove('fa-times');
+            iconEL.classList.add('fa-bars');
         }
     });
 });
 
 
 window.addEventListener('scroll', function() {
-    const scrollHeight = window.pageYOffset;
+    const scrollHeightEL = window.pageYOffset;
     
-    if (scrollHeight > 80) {
-        nav.classList.add('scrolled');
+    if (scrollHeightEL > 80) {
+        navEL.classList.add('scrolled');
     } else {
-        nav.classList.remove('scrolled');
+        navEL.classList.remove('scrolled');
     }
 
-    if (scrollHeight > 500) {
-        topLink.classList.add('show');
+    if (scrollHeightEL > 500) {
+        topLinkEL.classList.add('show');
     } else {
-        topLink.classList.remove('show');
+        topLinkEL.classList.remove('show');
     }
 });
 
@@ -52,16 +56,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
+        const targetIdEL = this.getAttribute('href');
+        if(targetIdEL === '#') return;
         
-        const targetElement = document.querySelector(targetId);
-        if(targetElement) {
-            const navHeight = nav.getBoundingClientRect().height;
-            const targetPosition = targetElement.offsetTop - navHeight;
+        const targetElementEL = document.querySelector(targetIdEL);
+        if(targetElementEL) {
+            const navHeightEL = navEL.getBoundingClientRect().height;
+            const targetPositionEL = targetElementEL.offsetTop - navHeightEL;
             
             window.scrollTo({
-                top: targetPosition,
+                top: targetPositionEL,
                 behavior: 'smooth'
             });
         }
