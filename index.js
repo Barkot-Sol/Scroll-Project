@@ -7,19 +7,20 @@ const navLinksEL = document.querySelector('.nav-links');
 const topLinkEL = document.querySelector('.top-link');
 const navCenterEL = document.querySelector('.nav-center');
 
-navToggleEL.addEventListener('click', function() {
-    navCenterEL.classList.toggle('show-color');
+navToggleEl.addEventListener('click', function() {
     navLinksEL.classList.toggle('show-links');
     navEL.classList.toggle('show-links');
     const iconEL = this.querySelector('i');
     if (navLinksEL.classList.contains('show-links')) {
         iconEL.classList.remove('fa-bars');
         iconEL.classList.add('fa-times');
-        navToggleEL.style.color = '#1e1d1dff';
+        navToggleEl.style.color = '#1e1d1dff';
+        navCenterEL.classList.remove('show-color');
     } else {
         iconEL.classList.remove('fa-times');
         iconEL.classList.add('fa-bars');
-        navToggleEL.style.color = 'white';
+        navToggleEl.style.color = 'white';
+        navCenterEL.classList.add('show-color');
     }
 });
 
